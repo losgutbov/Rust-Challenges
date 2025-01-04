@@ -7,23 +7,35 @@ fn main() {
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
-    println!("O número secreto é: {secret_number}");
+    //println!("O número secreto é: {secret_number}");
 
-    println!("Por favor, insira seu palpite");
+    loop{
 
-    let mut guess = String::new();
+        println!("Por favor, insira seu palpite");
 
-    io::stdin()
-        .read_line(&mut guess)
-        .expect("Falhou ao ler a linha");
+        let mut guess = String::new();
 
-    let guess: u32 = guess.trim().parse().expect("Por favor,  digite um número");
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Falhou ao ler a linha");
 
-    println!("Seu palpite foi: {}", guess);
+        let guess: u32 = match guess.trim().parse(){
+            Ok(num) => num,
+            Err(_) => continue,
+        };
 
-    match guess.cmp(&secret_number){
-        Ordering::Less => println!("Muito Baixo!"),
-        Ordering::Greater => println!("Muito Alto!"),
-        Ordering::Equal => println!("Você acertou!"),
+        println!("Seu palpite foi: {}", guess);
+
+        match guess.cmp(&secret_number){
+            Ordering::Less => println!("Muito Baixo!"),
+            Ordering::Greater => println!("Muito Alto!"),
+            Ordering::Equal => {
+                println!("Você acertou!");
+                break;
+            }
+        }
+
     }
+
+    
 }
