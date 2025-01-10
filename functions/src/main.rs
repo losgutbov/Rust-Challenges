@@ -1,7 +1,8 @@
-fn main() {
-    print_labeled_measurement(5, 'h');
+fn five() -> i32{
+    5
 }
+fn main() {
+    let x = five();
 
-fn print_labeled_measurement(value: i32, unit_label: char){
-    println!("The measurement is: {value}{unit_label}");
+    println!("The value of x is: {x}")
 }
