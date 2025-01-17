@@ -1,4 +1,4 @@
-fn main() {
+fn loop_label() {
     let mut count = 0;
 
     'counting_up: loop{
@@ -21,4 +21,20 @@ fn main() {
     }
 
     println!("End count = {count}");
+}
+
+fn while_loop(){
+    let mut number = 3;
+
+    while number !=0 {
+        println!("{number}!");
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
+}
+
+fn main(){
+    
 }
